@@ -7,12 +7,12 @@
   <meta name="description" content="Contagem regressiva especial para a aposentadoria de Sandro Schram no dia 01/11/2026!" />
   
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236366f1'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='white'>🎉</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2306b6d4'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='white'>🏖️</text></svg>" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@500;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after {
@@ -22,11 +22,11 @@
     }
 
     :root {
-      --bg-dark: #0f172a;
-      --card-bg: rgba(30, 41, 59, 0.7);
-      --card-border: rgba(255, 255, 255, 0.1);
-      --accent-primary: #818cf8;
-      --accent-secondary: #c084fc;
+      --bg-dark: #070f1e;
+      --card-bg: rgba(15, 23, 42, 0.75);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --accent-primary: #38bdf8;
+      --accent-secondary: #818cf8;
       --accent-gold: #fbbf24;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
@@ -41,50 +41,121 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
       overflow-x: hidden;
       position: relative;
     }
 
-    /* Background Orbs */
+    /* Ambient Ocean Glow Orbs */
     .orb {
       position: fixed;
       border-radius: 50%;
-      filter: blur(120px);
+      filter: blur(140px);
       pointer-events: none;
       z-index: 0;
       opacity: 0.35;
-      animation: float 18s ease-in-out infinite alternate;
+      animation: float 20s ease-in-out infinite alternate;
     }
 
     .orb-1 {
-      width: 450px;
-      height: 450px;
-      background: var(--accent-primary);
-      top: -100px;
-      left: -100px;
+      width: 550px;
+      height: 550px;
+      background: #0284c7;
+      top: -120px;
+      left: -120px;
     }
 
     .orb-2 {
       width: 500px;
       height: 500px;
-      background: var(--accent-secondary);
+      background: #0d9488;
       bottom: -150px;
       right: -100px;
-      animation-delay: -9s;
+      animation-delay: -10s;
     }
 
     @keyframes float {
       0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(50px, 30px) scale(1.1); }
+      100% { transform: translate(40px, 30px) scale(1.08); }
     }
 
-    /* Container */
+    /* Floating Maldives Photo Frames */
+    .photo-frame {
+      position: absolute;
+      z-index: 1;
+      background: #ffffff;
+      padding: 10px 10px 32px 10px;
+      border-radius: 8px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(56, 189, 248, 0.15);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .photo-frame .caption {
+      position: absolute;
+      bottom: 6px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Caveat', cursive;
+      font-size: 1.15rem;
+      color: #1e293b;
+      font-weight: 700;
+    }
+
+    .photo-frame:hover {
+      transform: scale(1.12) rotate(0deg) !important;
+      z-index: 10;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(56, 189, 248, 0.4);
+    }
+
+    /* Positioning floating frames for desktop */
+    .frame-1 {
+      width: 180px;
+      height: 210px;
+      top: 60px;
+      left: 4%;
+      transform: rotate(-7deg);
+    }
+
+    .frame-2 {
+      width: 190px;
+      height: 220px;
+      top: 80px;
+      right: 4%;
+      transform: rotate(6deg);
+    }
+
+    .frame-3 {
+      width: 175px;
+      height: 205px;
+      bottom: 40px;
+      left: 5%;
+      transform: rotate(5deg);
+    }
+
+    .frame-4 {
+      width: 185px;
+      height: 215px;
+      bottom: 50px;
+      right: 5%;
+      transform: rotate(-6deg);
+    }
+
+    /* Main Container */
     .container {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       width: 100%;
-      max-width: 760px;
+      max-width: 780px;
       text-align: center;
     }
 
@@ -94,32 +165,32 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.5rem 1.25rem;
-      background: rgba(129, 140, 248, 0.15);
-      border: 1px solid rgba(129, 140, 248, 0.3);
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
       border-radius: 9999px;
       font-size: 0.875rem;
       font-weight: 600;
       color: var(--accent-primary);
       margin-bottom: 1.5rem;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(12px);
     }
 
     h1 {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
       font-weight: 800;
       line-height: 1.15;
       letter-spacing: -0.02em;
       margin-bottom: 1rem;
-      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, var(--accent-primary) 100%);
+      background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, var(--accent-primary) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-size: clamp(1rem, 2.3vw, 1.2rem);
       color: var(--text-muted);
-      max-width: 580px;
+      max-width: 600px;
       margin: 0 auto 2.5rem;
       line-height: 1.6;
     }
@@ -133,7 +204,7 @@
     .countdown-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+      gap: 1.1rem;
       margin-bottom: 2.5rem;
     }
 
@@ -143,18 +214,18 @@
       border-radius: 1.25rem;
       padding: 1.75rem 1rem;
       backdrop-filter: blur(16px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease, border-color 0.3s ease;
     }
 
     .time-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(129, 140, 248, 0.4);
+      border-color: rgba(56, 189, 248, 0.4);
     }
 
     .time-value {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
       font-weight: 800;
       color: #ffffff;
       line-height: 1;
@@ -170,6 +241,61 @@
       letter-spacing: 0.1em;
     }
 
+    /* Maldives Gallery Section for Mobile / Integrated Card */
+    .maldives-gallery-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 1.5rem;
+      padding: 1.75rem;
+      backdrop-filter: blur(16px);
+      margin-bottom: 2rem;
+    }
+
+    .gallery-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .gallery-grid-inline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      border-color: var(--accent-primary);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
     /* Quote Card */
     .quote-card {
       background: var(--card-bg);
@@ -178,7 +304,6 @@
       padding: 2rem;
       backdrop-filter: blur(16px);
       margin-bottom: 2rem;
-      position: relative;
     }
 
     .quote-text {
@@ -190,7 +315,7 @@
     }
 
     .quote-author {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--accent-gold);
       font-weight: 600;
     }
@@ -200,22 +325,22 @@
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
       color: #ffffff;
       font-family: inherit;
       font-size: 1rem;
       font-weight: 700;
-      padding: 0.9rem 2rem;
+      padding: 0.95rem 2.2rem;
       border: none;
       border-radius: 9999px;
       cursor: pointer;
-      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+      box-shadow: 0 8px 25px rgba(2, 132, 199, 0.45);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .btn-celebrate:hover {
       transform: scale(1.05);
-      box-shadow: 0 12px 30px rgba(99, 102, 241, 0.6);
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.6);
     }
 
     .btn-celebrate:active {
@@ -234,33 +359,60 @@
       font-weight: 600;
     }
 
-    /* Responsive */
-    @media (max-width: 600px) {
+    /* Responsive Adjustments */
+    @media (max-width: 1100px) {
+      .photo-frame {
+        display: none; /* Hide floating corner polaroids on smaller screens */
+      }
+    }
+
+    @media (max-width: 650px) {
       .countdown-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 0.85rem;
       }
-      .time-card {
-        padding: 1.25rem 0.75rem;
+      .gallery-grid-inline {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Orbs -->
+  <!-- Background Ocean Orbs -->
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
 
+  <!-- Floating Maldives Polaroid Frames (Desktop) -->
+  <div class="photo-frame frame-1" title="Maldivas 🌴">
+    <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=500&q=80" alt="Maldivas Bangalôs" />
+    <div class="caption">Maldivas 🌴</div>
+  </div>
+
+  <div class="photo-frame frame-2" title="Paraíso à vista 🌊">
+    <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=500&q=80" alt="Maldivas Praia" />
+    <div class="caption">Paraíso 🌊</div>
+  </div>
+
+  <div class="photo-frame frame-3" title="Relax total 🍹">
+    <img src="https://images.unsplash.com/photo-1540206395-68808572332f?auto=format&fit=crop&w=500&q=80" alt="Mar Turquesa" />
+    <div class="caption">Relax total 🍹</div>
+  </div>
+
+  <div class="photo-frame frame-4" title="Modo Férias ☀️">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80" alt="Praia Tropical" />
+    <div class="caption">Modo Férias ☀️</div>
+  </div>
+
   <div class="container">
     <div class="badge">
-      <span>🥂</span> Uma nova jornada se aproxima
+      <span>✈️</span> Próxima Parada: Maldivas
     </div>
 
     <h1>Aposentadoria de<br/><span class="highlight-name">Sandro Schram</span></h1>
     
     <p class="subtitle">
-      Celebrando anos de dedicação, amizade e grandes conquistas! Falta bem pouco para o início do merecido descanso.
+      Contando os dias para desligar os alarmes, colocar o pé na areia e curtir o paraíso que você tanto merece!
     </p>
 
     <!-- Contador -->
@@ -283,17 +435,38 @@
       </div>
     </div>
 
+    <!-- Mosaico / Galeria das Maldivas -->
+    <div class="maldives-gallery-card">
+      <div class="gallery-title">
+        <span>🏝️</span> Destino dos Sonhos: Maldivas
+      </div>
+      <div class="gallery-grid-inline">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=500&q=80" alt="Bangalôs sobre a água" />
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=500&q=80" alt="Praias de areia branca" />
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1540206395-68808572332f?auto=format&fit=crop&w=500&q=80" alt="Águas cristalinas" />
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80" alt="Pôr do sol tropical" />
+        </div>
+      </div>
+    </div>
+
     <!-- Card de Mensagem / Homenagem -->
     <div class="quote-card">
       <p class="quote-text">
-        "O sucesso não é apenas o que você conquista em sua carreira, mas o impacto que você deixa na vida das pessoas ao seu redor."
+        "O descanso é a recompensa de quem trabalhou com dedicação e deixou sua marca registrada. Aproveite cada segundo no paraíso!"
       </p>
-      <div class="quote-author">✨ Obrigado por tudo, Sandro!</div>
+      <div class="quote-author">✨ Valeu por tudo, Sandro!</div>
     </div>
 
     <!-- Botão de Comemoração -->
     <button class="btn-celebrate" id="btn-confetti">
-      <span>🎊</span> Celebrar Agora!
+      <span>🎉</span> Celebrar a Aposentadoria!
     </button>
 
     <div class="date-tag">
@@ -306,7 +479,7 @@
 
   <script>
     (() => {
-      // Data Alvo: 01/11/2026 00:00:00 (Horário local)
+      // Data Alvo: 01/11/2026 00:00:00
       const targetDate = new Date('2026-11-01T00:00:00').getTime();
 
       const daysEl = document.getElementById('days');
@@ -338,7 +511,6 @@
         secondsEl.textContent = String(seconds).padStart(2, '0');
       }
 
-      // Atualiza imediatamente e de segundo em segundo
       updateCountdown();
       setInterval(updateCountdown, 1000);
 
@@ -346,8 +518,8 @@
       btnConfetti.addEventListener('click', () => {
         if (typeof confetti === 'function') {
           confetti({
-            particleCount: 120,
-            spread: 80,
+            particleCount: 140,
+            spread: 90,
             origin: { y: 0.6 }
           });
         }
