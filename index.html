@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contagem Regressiva — Aposentadoria do Sandro Schram</title>
+  <meta name="description" content="Contagem regressiva especial para a aposentadoria de Sandro Schram no dia 01/11/2026!" />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236366f1'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='white'>🎉</text></svg>" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-dark: #0f172a;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --accent-primary: #818cf8;
+      --accent-secondary: #c084fc;
+      --accent-gold: #fbbf24;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background Orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+      animation: float 18s ease-in-out infinite alternate;
+    }
+
+    .orb-1 {
+      width: 450px;
+      height: 450px;
+      background: var(--accent-primary);
+      top: -100px;
+      left: -100px;
+    }
+
+    .orb-2 {
+      width: 500px;
+      height: 500px;
+      background: var(--accent-secondary);
+      bottom: -150px;
+      right: -100px;
+      animation-delay: -9s;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(50px, 30px) scale(1.1); }
+    }
+
+    /* Container */
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 760px;
+      text-align: center;
+    }
+
+    /* Header */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.25rem;
+      background: rgba(129, 140, 248, 0.15);
+      border: 1px solid rgba(129, 140, 248, 0.3);
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent-primary);
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, var(--accent-primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.6;
+    }
+
+    .highlight-name {
+      color: var(--accent-gold);
+      font-weight: 700;
+    }
+
+    /* Countdown Grid */
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .time-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 1.25rem;
+      padding: 1.75rem 1rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .time-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(129, 140, 248, 0.4);
+    }
+
+    .time-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .time-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Quote Card */
+    .quote-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      backdrop-filter: blur(16px);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .quote-text {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #e2e8f0;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+
+    .quote-author {
+      font-size: 0.9rem;
+      color: var(--accent-gold);
+      font-weight: 600;
+    }
+
+    /* Actions */
+    .btn-celebrate {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-celebrate:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(99, 102, 241, 0.6);
+    }
+
+    .btn-celebrate:active {
+      transform: scale(0.98);
+    }
+
+    /* Date tag */
+    .date-tag {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .date-tag span {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .countdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.85rem;
+      }
+      .time-card {
+        padding: 1.25rem 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <div class="container">
+    <div class="badge">
+      <span>🥂</span> Uma nova jornada se aproxima
+    </div>
+
+    <h1>Aposentadoria de<br/><span class="highlight-name">Sandro Schram</span></h1>
+    
+    <p class="subtitle">
+      Celebrando anos de dedicação, amizade e grandes conquistas! Falta bem pouco para o início do merecido descanso.
+    </p>
+
+    <!-- Contador -->
+    <div class="countdown-grid">
+      <div class="time-card">
+        <div class="time-value" id="days">00</div>
+        <div class="time-label">Dias</div>
+      </div>
+      <div class="time-card">
+        <div class="time-value" id="hours">00</div>
+        <div class="time-label">Horas</div>
+      </div>
+      <div class="time-card">
+        <div class="time-value" id="minutes">00</div>
+        <div class="time-label">Minutos</div>
+      </div>
+      <div class="time-card">
+        <div class="time-value" id="seconds">00</div>
+        <div class="time-label">Segundos</div>
+      </div>
+    </div>
+
+    <!-- Card de Mensagem / Homenagem -->
+    <div class="quote-card">
+      <p class="quote-text">
+        "O sucesso não é apenas o que você conquista em sua carreira, mas o impacto que você deixa na vida das pessoas ao seu redor."
+      </p>
+      <div class="quote-author">✨ Obrigado por tudo, Sandro!</div>
+    </div>
+
+    <!-- Botão de Comemoração -->
+    <button class="btn-celebrate" id="btn-confetti">
+      <span>🎊</span> Celebrar Agora!
+    </button>
+
+    <div class="date-tag">
+      Data marcante: <span>01 de Novembro de 2026</span>
+    </div>
+  </div>
+
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    (() => {
+      // Data Alvo: 01/11/2026 00:00:00 (Horário local)
+      const targetDate = new Date('2026-11-01T00:00:00').getTime();
+
+      const daysEl = document.getElementById('days');
+      const hoursEl = document.getElementById('hours');
+      const minutesEl = document.getElementById('minutes');
+      const secondsEl = document.getElementById('seconds');
+      const btnConfetti = document.getElementById('btn-confetti');
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance < 0) {
+          daysEl.textContent = '00';
+          hoursEl.textContent = '00';
+          minutesEl.textContent = '00';
+          secondsEl.textContent = '00';
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        daysEl.textContent = String(days).padStart(2, '0');
+        hoursEl.textContent = String(hours).padStart(2, '0');
+        minutesEl.textContent = String(minutes).padStart(2, '0');
+        secondsEl.textContent = String(seconds).padStart(2, '0');
+      }
+
+      // Atualiza imediatamente e de segundo em segundo
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      // Efeito de confetes ao clicar no botão
+      btnConfetti.addEventListener('click', () => {
+        if (typeof confetti === 'function') {
+          confetti({
+            particleCount: 120,
+            spread: 80,
+            origin: { y: 0.6 }
+          });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
